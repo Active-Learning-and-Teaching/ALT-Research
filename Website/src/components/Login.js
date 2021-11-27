@@ -28,7 +28,7 @@ export default function Login() {
 	}
 
 	return (
-		<>
+		<div>
 			<Card>
 				<Card.Body>
 					<h2 className="text-center mb-4">Login</h2>
@@ -52,6 +52,6 @@ export default function Login() {
 			<div className="w-100 text-center mt-2">
 				Need an Account? <Link to="/signup">Sign Up</Link>
 			</div>
-		</>
+		</div>
 	);
 }
