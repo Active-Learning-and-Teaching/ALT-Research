@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Form, Button, Card, Alert,Container} from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import AppLogo from "../Assets/Logo.png";
 
 export default function Signup() {
 	const emailRef = useRef();
@@ -19,45 +20,85 @@ export default function Signup() {
 			return setError("Passwords do not match");
 		}
 
-            try{
-                setError("");
-                setLoading(true);
-                await signup(emailRef.current.value, passwordRef.current.value);
-                navigate("/");
-            }
-            catch{
-                setError("Failed to Signup User");
-            }
-
+		try {
+			setError("");
+			setLoading(true);
+			await signup(emailRef.current.value, passwordRef.current.value);
+			navigate("/");
+		} catch {
+			setError("Failed to Signup User");
+		}
 
 		setLoading(false);
 	}
 
 	return (
 		<>
-			<Card >
+			<Card bg="light">
 				<Card.Body>
-					{/* <h2 className="text-center mb-4">Sign Up New</h2> */}
-					<Card.Header>Sign up</Card.Header>
 					{error && <Alert variant="danger">{error}</Alert>}
-					<Form onSubmit={handleSubmit}>
-						<Form.Group id="email">
-							<Form.Label>Email</Form.Label>
-							<Form.Control type="email" ref={emailRef} required />
-						</Form.Group>
-						<Form.Group id="password">
-							<Form.Label>Password</Form.Label>
-							<Form.Control type="password" ref={passwordRef} required />
-						</Form.Group>
-						<Form.Group id="password-confirm">
-							<Form.Label>Password Confirmation</Form.Label>
-							<Form.Control type="password" ref={passwordConfirmRef} required />
-						</Form.Group>
-						<Button disabled={loading} className="w-100" type="submit">
-							Sign Up
-						</Button>
- 
-					</Form>
+					<Container id="main-container" className="d-grid h-300">
+						<Form
+							id="sign-in-form"
+							className="text-center p-3"
+							onSubmit={handleSubmit}
+						>
+							<img className="mb-4 bootstrap-logo" src={AppLogo} />
+							<Form.Group className="mb-2"controlId="sign-in-email-address">
+								<Form.Control
+									type="email"
+									size="lg"
+									placeholder="Email address"
+									autoComplete="username"
+									className="position-relative"
+									ref={emailRef}
+									required
+								/>
+							</Form.Group>
+							<Form.Group className="mb-2" controlId="sign-in-password">
+								<Form.Control
+									type="password"
+									size="lg"
+									placeholder="Password"
+									autoComplete="current-password"
+									className="position-relative"
+									ref={passwordRef}
+									required
+								/>
+							</Form.Group>
+							<Form.Group className="mb-4" controlId="sign-in-password-confirm">
+								<Form.Control
+									type="password"
+									size="lg"
+									placeholder="ConfirmPassword"
+									autoComplete="current-password"
+									className="position-relative"
+									ref={passwordConfirmRef}
+									required
+								/>
+							</Form.Group>
+
+							<div className="d-grid">
+								<style type="text/css">
+									{`
+   							 		.btn-flat {
+   						  			background-color: #931618;
+      								color: white;
+  								  }
+  							  `}
+								</style>
+								<Button
+									variant="flat"
+									size="lg"
+									type="submit"
+									disabled={loading}
+								>
+									SIGN UP
+								</Button>
+							</div>
+							<p className="mt-5 text-muted">&copy; 2021-2022</p>
+						</Form>
+					</Container>
 				</Card.Body>
 			</Card>
 			<div className="w-100 text-center mt-2">
@@ -66,3 +107,5 @@ export default function Signup() {
 		</>
 	);
 }
+
+

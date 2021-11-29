@@ -1,7 +1,9 @@
 import React, { useRef, useState } from "react";
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
-import { Link , useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import AppLogo from "../Assets/Logo.png";
+import "./login-signup.css";
 
 export default function Login() {
 	const emailRef = useRef();
@@ -19,8 +21,8 @@ export default function Login() {
 			setLoading(true);
 			await login(emailRef.current.value, passwordRef.current.value);
 			navigate("/");
-		} catch(er) {
-            console.log(er);
+		} catch (er) {
+			console.log(er);
 			setError("Failed to Sign In User");
 		}
 
@@ -29,24 +31,65 @@ export default function Login() {
 
 	return (
 		<div>
-			<Card>
+			<Card bg="light">
 				<Card.Body>
-					<h2 className="text-center mb-4">Login</h2>
 					{error && <Alert variant="danger">{error}</Alert>}
-					<Form onSubmit={handleSubmit}>
-						<Form.Group id="email">
-							<Form.Label>Email</Form.Label>
-							<Form.Control type="email" ref={emailRef} required />
-						</Form.Group>
-						<Form.Group id="password">
-							<Form.Label>Password</Form.Label>
-							<Form.Control type="password" ref={passwordRef} required />
-						</Form.Group>
-
-						<Button disabled={loading} className="w-100" type="submit">
-							Login
-						</Button>
-					</Form>
+					<Container id="main-container" className="d-grid h-300">
+						<Form
+							id="sign-in-form"
+							className="text-center p-3"
+							onSubmit={handleSubmit}
+						>
+							<img className="mb-4 bootstrap-logo" src={AppLogo} />
+							<Form.Group className="mb-2" controlId="sign-in-email-address">
+								<Form.Control
+									type="email"
+									size="lg"
+									placeholder="Email address"
+									autoComplete="username"
+									className="position-relative"
+									ref={emailRef}
+									required
+								/>
+							</Form.Group>
+							<Form.Group className="mb-2" controlId="sign-in-password">
+								<Form.Control
+									type="password"
+									size="lg"
+									placeholder="Password"
+									autoComplete="current-password"
+									className="position-relative"
+									ref={passwordRef}
+									required
+								/>
+							</Form.Group>
+							<Form.Group
+								className="d-flex justify-content-center mb-4"
+								controlId="remember-me"
+							>
+								<Form.Check label="Remember me" />
+							</Form.Group>
+							<div className="d-grid">
+								<style type="text/css">
+									{`
+   							 		.btn-flat {
+   						  			background-color: #931618;
+      								color: white;
+  								  }
+  							  `}
+								</style>
+								<Button
+									variant="flat"
+									size="lg"
+									type="submit"
+									disabled={loading}
+								>
+									LOG IN 
+								</Button>
+							</div>
+							<p className="mt-5 text-muted">&copy; 2021-2022</p>
+						</Form>
+					</Container>
 				</Card.Body>
 			</Card>
 			<div className="w-100 text-center mt-2">
