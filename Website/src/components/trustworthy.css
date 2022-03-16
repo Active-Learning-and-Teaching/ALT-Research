@@ -1,0 +1,108 @@
+.App {
+    text-align: left;
+  }
+  .heading {
+    height: 200px;
+  }
+  
+  
+  .App-header {
+    background-color: #FFECEC;
+    height: 600px;
+    transform: translateY(-2%);
+    border-radius: 15px;
+  }
+  
+  .button {
+    background-color: #C54242;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    margin: 4px 2px;
+    padding: 10px 10px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 15px;
+    width: 20%;
+    height: 10%;
+    top: 50%;
+    left: 90%;
+    transform: translateX(+200%) translateY(+20%);
+  }
+  .heading_lecture{
+    background-color: #F5F5F5;
+    height: 1195px;
+    padding: 10px 30px;
+  }
+  
+  
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .index1 {
+    top: 50%;
+    left: 90%;
+    transform: translateX(+70%) translateY(+18%);
+    width: 350px;
+    height: 400px;
+    background-color: white;
+    border-radius: 15px;
+  }
+  
+  .index2 {
+    top: 50%;
+    left: 90%;
+    transform: translateX(+195%) translateY(-87%);
+    width: 350px;
+    height: 400px;
+    background-color: white;
+    border-radius: 15px;
+  }
+  
+  
+  .small_button{
+    border:none;
+    cursor: pointer;
+  }
+  .Table {
+    width: 20%;
+    height: 10%;
+    top: 50%;
+    left: 90%;
+    transform: translateX(+100%) translateY(+20%);
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 200px 200px 500px rgba(0, 0, 0, 0.15);
+  }
+  .Table thead tr {
+    background-color: #C54242;
+    color: #ffffff;
+    text-align: left;
+    border-radius: 15px;
+  }
+  .Table th,
+  .Table td {
+      border-bottom: 4px hsla(89, 43%, 51%, 0.3);
+      padding: 12px 15px;
+  }
+  .Table tr:nth-child(even) {
+    background-color: #FFECEC;
+  }
+  .Table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  .Table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+  }
+  

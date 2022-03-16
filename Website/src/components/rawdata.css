@@ -1,0 +1,55 @@
+.RawData {
+  text-align: left;
+  background-color: white;
+  height: 800px;
+}
+.heading {
+  height: 150px;
+}
+.RawData-body {
+  background-color:#F5F5F5;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
+.box{
+  top: 10%;
+  background-color: white;
+  margin: 300px 2px;
+  height: 350px;
+  transform: translateY(-70%);
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.button {
+  background-color: #DE50001A;
+  color: black;
+  text-align: center;
+  font-size: 20px;
+  margin: 4px 2px;
+  padding: 10px 10px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 15px;
+  width: 20%;
+}
+
+
+
+
+
+
+
