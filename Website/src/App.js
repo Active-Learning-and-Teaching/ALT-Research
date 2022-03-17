@@ -13,10 +13,11 @@ function App() {
 		<Router>
 			<AuthProvider>
 				<Routes>
-					<Route exact path="/" element={<Dashboard />} />
+					<Route exact path="/" element={<Login />} />
+					<Route exact path="/login" element={<Login />} />
+					<Route exact path="/dashboard" element={<Dashboard />} />
 					<Route exact path="/signup" element={<Signup />} />
 					<Route excat path="/testComponents" element={<FormPage />} />
-					<Route exact path="/login" element={<Login />} />
 					<Route exact path="/rawdata" element={<RawData/>}/>
 					<Route exact path="/trustworthy" element={<Trustworthy/>}/>
 				</Routes>
