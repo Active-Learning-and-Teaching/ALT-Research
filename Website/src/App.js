@@ -10,25 +10,18 @@ import Trustworthy from "./components/trustworthy";
 
 function App() {
 	return (
-		<Container
-			className="d-flex align-items-center justify-content-center"
-			style={{ minHeight: "100vh" }}
-		>
-			<div className="w-100" style={{ maxWidth: "400px" }}>
-				<Router>
-					<AuthProvider>
-						<Routes>
-							<Route exact path="/" element={<Dashboard />} />
-							<Route exact path="/signup" element={<Signup />} />
-							<Route excat path="/testComponents" element={<FormPage />} />
-							<Route exact path="/login" element={<Login />} />
-							<Route exact path="/rawdata" element={<RawData/>}/>
-							<Route exact path="/trustworthy" element={<Trustworthy/>}/>
-						</Routes>
-					</AuthProvider>
-				</Router>
-			</div>
-		</Container>
+		<Router>
+			<AuthProvider>
+				<Routes>
+					<Route exact path="/" element={<Dashboard />} />
+					<Route exact path="/signup" element={<Signup />} />
+					<Route excat path="/testComponents" element={<FormPage />} />
+					<Route exact path="/login" element={<Login />} />
+					<Route exact path="/rawdata" element={<RawData/>}/>
+					<Route exact path="/trustworthy" element={<Trustworthy/>}/>
+				</Routes>
+			</AuthProvider>
+		</Router>
 	);
 }
 
