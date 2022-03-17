@@ -39,13 +39,8 @@ function Navi() {
 	});
 
 	return (
-		<div className="nav">
-			<>
-				<Container className="d-flex align-items-start">
-					<h2>{name}</h2>
-					<li></li>
-				</Container>
-				<Navbar bg="light" variant="light" className="flex">
+		<div className="nav" >
+				<Navbar bg="light" variant="light" className="flex" fixed="top">
 					<Container>
 						<Nav className="mx-auto" variant="tabs">
 							<Nav.Link href="#home" className="px-2">
@@ -67,7 +62,6 @@ function Navi() {
 						</Nav>
 					</Container>
 				</Navbar>
-			</>
 		</div>
 	);
 }
