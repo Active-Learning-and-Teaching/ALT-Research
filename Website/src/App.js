@@ -8,6 +8,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FormPage from "./components/test";
 import Trustworthy from "./components/trustworthy";
 import Under_Eng from "./components/under_eng";
+import Under_Eng_Overall from "./components/under_eng_overall";
+import Trustworthy_Overall from "./components/trustworthy_overall";
 
 function App() {
 	return (
@@ -21,6 +23,8 @@ function App() {
 					<Route exact path="/rawdata" element={<RawData/>}/>
 					<Route exact path="/trustworthy" element={<Trustworthy/>}/>
 					<Route exact path="/under_eng" element={<Under_Eng/>}/>
+					<Route exact path="/under_eng_overall" element={<Under_Eng_Overall/>}/>
+					<Route exact path="/trustworthy_overall" element={<Trustworthy_Overall/>}/>
 				</Routes>
 			</AuthProvider>
 		</Router>
