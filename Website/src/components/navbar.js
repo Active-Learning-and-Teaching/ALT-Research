@@ -13,7 +13,7 @@ import { getDatabase, ref, child, get } from "firebase/database";
 import app from "../firebase";
 const database = getDatabase(app);
 // InternalDb/Courses/-M8rFNfwcRmYqx8mpJxL/courseCode
-// TODO: Replace the following with your nav's Firebase project configuration
+// TODO: Replace the following with your App's Firebase project configuration
 const dbRef = ref(database);
 
 function Navi() {
@@ -47,7 +47,7 @@ function Navi() {
 								{" "}
 								<FontAwesomeIcon icon={faUsers} /> Students
 							</Nav.Link>
-							<Nav.Link href="#features" className="px-2">
+							<Nav.Link href="/under_eng" className="px-2">
 								{" "}
 								<FontAwesomeIcon icon={faChalkboardTeacher} /> Lectures
 							</Nav.Link>

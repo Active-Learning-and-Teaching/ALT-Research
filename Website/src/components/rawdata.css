@@ -10,31 +10,8 @@
   background-color:#F5F5F5;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40px;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-
-.box{
-  top: 10%;
-  background-color: white;
-  margin: 300px 2px;
-  height: 350px;
-  transform: translateY(-70%);
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-.button {
+/* .button {
   background-color: #DE50001A;
   color: black;
   text-align: center;
@@ -45,7 +22,7 @@
   cursor: pointer;
   border-radius: 15px;
   width: 20%;
-}
+} */
 
 
 
