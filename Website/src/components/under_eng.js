@@ -26,7 +26,7 @@ class Under_Eng extends React.Component
         this.state={
             showMe:true,
             name:"Default Value",
-            lecture_name:"Lecture No.",
+            lecture_name:"Lecture 1",
             understanding_arr1:[],
             understanding_arr2:[],
             understanding_arr3:[],
@@ -35,9 +35,9 @@ class Under_Eng extends React.Component
             engagement_arr3:[]
         }
         this.getCourseName = this.getCourseName.bind(this);
+        this.getLectureName()
         this.getUnderstandingIndex()
         this.getEngagementIndex()
-        this.getLectureName()
         console.log("Hurrayy");
         console.log(this.state.understanding_arr1);
     }
@@ -55,8 +55,17 @@ class Under_Eng extends React.Component
 
     }
     getUnderstandingIndex(){
-        console.log('In TLS_OP')
-        get(child(dbRef, 'InternalDb/alt-r/Lecture 1/')).then((snapshot) => {
+        console.log('In TLS_OP');
+        let text1='InternalDb/alt-r/Lectures/';
+        let text2=this.state.lecture_name;
+        console.log("Printing lecture number")
+        console.log(text2);
+        let text3='/';
+        let path = text1.concat(text2);
+        let final_path=path.concat(text3);
+        console.log("Printing final path")
+        console.log(final_path);
+        get(child(dbRef, final_path)).then((snapshot) => {
             if (snapshot.exists()) {
                 console.log(snapshot.val());
 
@@ -193,7 +202,7 @@ class Under_Eng extends React.Component
 
     getEngagementIndex(){
         console.log('In TLS_OP')
-        get(child(dbRef, 'InternalDb/alt-r/Lecture 1/')).then((snapshot) => {
+        get(child(dbRef, 'InternalDb/alt-r/Lectures/Lecture 1/')).then((snapshot) => {
             if (snapshot.exists()) {
                 console.log(snapshot.val());
 
@@ -331,7 +340,7 @@ class Under_Eng extends React.Component
     }
     getLectureName(){
         console.log('In TLS_OP to get Lecture Name')
-        get(child(dbRef, 'InternalDb/alt-r/')).then((snapshot) => {
+        get(child(dbRef, 'InternalDb/alt-r/Lectures/')).then((snapshot) => {
             if (snapshot.exists()) {
                 console.log("Lecture Name-: ")
                 console.log(Object.keys(snapshot.val())[0]);
@@ -362,9 +371,9 @@ class Under_Eng extends React.Component
     }
     componentDidMount() {
         this.getCourseName('-M8rFNfwcRmYqx8mpJxL');
+        this.getLectureName();
         this.getUnderstandingIndex();
         this.getEngagementIndex();
-        this.getLectureName();
     }
     render(){
         return (
@@ -397,7 +406,7 @@ class Under_Eng extends React.Component
             this.state.showMe?
             <div className="App-header">
                 <div className="index1">
-                <h2>Understanding Index 1</h2>
+                <h3>Understanding Index 1</h3>
                 <Pie
                 data={
                     {
@@ -428,7 +437,7 @@ class Under_Eng extends React.Component
                 </div>
 
                 <div className="index2">
-                <h2>Understanding Index 2</h2>
+                <h3>Understanding Index 2</h3>
                 <Pie
                 data={
                     {
@@ -459,7 +468,7 @@ class Under_Eng extends React.Component
                 </div>
 
                 <div className="index3">
-                <h2>Understanding Index 3</h2>
+                <h3>Understanding Index 3</h3>
                 <Pie
                 data={
                     {
@@ -492,7 +501,7 @@ class Under_Eng extends React.Component
             :
             <div className="App-header">
                 <div className="index1">
-                <h2>Engagement Index 1</h2>
+                <h3>Engagement Index 1</h3>
                 <Pie
                 data={
                     {
@@ -523,7 +532,7 @@ class Under_Eng extends React.Component
                 </div>
 
                 <div className="index2">
-                <h2>Engagement Index 2</h2>
+                <h3>Engagement Index 2</h3>
                 <Pie
                 data={
                     {
@@ -554,7 +563,7 @@ class Under_Eng extends React.Component
                 </div>
 
                 <div className="index3">
-                <h2>Engagement Index 3</h2>
+                <h3>Engagement Index 3</h3>
                 <Pie
                 data={
                     {
