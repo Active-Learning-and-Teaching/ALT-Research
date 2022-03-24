@@ -2,9 +2,7 @@ import React, { useEffect } from "react";
 import "./dashboard.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import ClassCard from "../components/ClassCard";
-
-
+import ClassCard from "../../components/ClassCard/ClassCard";
 
 function Dashboard() {
 	//   const [user, loading, error] = useAuthState(auth);
@@ -35,17 +33,15 @@ function Dashboard() {
 	let hex = [
 		{ creatorName: "Jalote", name: "IP", id: "CSE101" },
 		{ creatorName: "Jal", name: "IP1", id: "CSE103" },
-		{ creatorName: "Shreeya", name: "PRO", id: "FUCK101" }
+		{ creatorName: "Shreeya", name: "PRO", id: "FUCK101" },
 	];
 
 	return (
-		<div className="dashboard">
+		<div className='dashboard'>
 			{classes?.length < 0 ? (
-				<div className="dashboard__404">
-					No classes found! Join or create one!
-				</div>
+				<div className='dashboard__404'>No classes found! Join or create one!</div>
 			) : (
-				<div className="dashboard__classContainer">
+				<div className='dashboard__classContainer'>
 					{hex.map((individualClass) => (
 						<ClassCard
 							creatorName={individualClass.creatorName}

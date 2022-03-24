@@ -2,19 +2,11 @@ import React, { Component } from "react";
 import "./trustworthy.css";
 import { Pie, Doughnut } from "react-chartjs-2";
 import { Button } from "reactstrap";
-import {
-	Navbar,
-	Container,
-	Nav,
-	NavDropdown,
-	NavbarBrand,
-	Row,
-	Col,
-} from "react-bootstrap";
-import back_arrow from "../Assets/back_arrow.png";
+import { Navbar, Container, Nav, NavDropdown, NavbarBrand, Row, Col } from "react-bootstrap";
+import back_arrow from "../../Assets/back_arrow.png";
 import { getDatabase, ref, child, get } from "firebase/database";
-import app from "../firebase";
-import Navi from "./navbar";
+import app from "../../firebase";
+import Navi from "../../components/Layout/navbar";
 const database = getDatabase(app);
 
 //npm install reactstrap react react-dom
@@ -87,8 +79,7 @@ class Trustworthy extends React.Component {
 					var under100 = 0;
 					console.log(Object.keys(snapshot.val()).length);
 					for (var i = 0; i < Object.keys(snapshot.val()).length; i++) {
-						var num =
-							Object.values(snapshot.val())[i]["Trustworthy Index 1"] * 100;
+						var num = Object.values(snapshot.val())[i]["Trustworthy Index 1"] * 100;
 						console.log(num);
 						if (num >= 0 && num <= 20) {
 							under20 = under20 + 1;
@@ -119,8 +110,7 @@ class Trustworthy extends React.Component {
 					var under100_2 = 0;
 					console.log(Object.keys(snapshot.val()).length);
 					for (var i = 0; i < Object.keys(snapshot.val()).length; i++) {
-						var num =
-							Object.values(snapshot.val())[i]["Trustworthy Index 2"] * 100;
+						var num = Object.values(snapshot.val())[i]["Trustworthy Index 2"] * 100;
 						console.log(num);
 						if (num >= 0 && num <= 20) {
 							under20_2 += 1;
@@ -176,14 +166,14 @@ class Trustworthy extends React.Component {
 	render() {
 		var heading = ["Name", "Trustworthy Index 1", "Trustworthy Index 2"];
 		return (
-			<div className="App">
+			<div className='App'>
 				<Navi></Navi>
-				<Container className="heading">
+				<Container className='heading'>
 					<h2>{this.state.name}</h2>
 				</Container>
-				<div className="heading_lecture">
-					<Button className="small_button">
-						<img src={back_arrow} width="16" height="17" />
+				<div className='heading_lecture'>
+					<Button className='small_button'>
+						<img src={back_arrow} width='16' height='17' />
 						Back to all quizzes
 					</Button>
 					<br></br>
@@ -191,21 +181,15 @@ class Trustworthy extends React.Component {
 					<br></br>
 					<br></br>
 					<br></br>
-					<div className="App-header">
-						<Button className="button">Trustworthyness</Button>
+					<div className='App-header'>
+						<Button className='button'>Trustworthyness</Button>
 
-						<div className="App-header">
-							<div className="index1">
+						<div className='App-header'>
+							<div className='index1'>
 								<h2>Trustworthy Index 1</h2>
 								<Pie
 									data={{
-										labels: [
-											"0% - 20%",
-											"20% - 40%",
-											"40% - 60%",
-											"60% - 80%",
-											"80% - 100%",
-										],
+										labels: ["0% - 20%", "20% - 40%", "40% - 60%", "60% - 80%", "80% - 100%"],
 										datasets: [
 											{
 												data: this.state.trustworthy_arr1,
@@ -230,17 +214,11 @@ class Trustworthy extends React.Component {
 								/>
 							</div>
 
-							<div className="index2">
+							<div className='index2'>
 								<h2>Trustworthy Index 2</h2>
 								<Pie
 									data={{
-										labels: [
-											"0% - 20%",
-											"20% - 40%",
-											"40% - 60%",
-											"60% - 80%",
-											"80% - 100%",
-										],
+										labels: ["0% - 20%", "20% - 40%", "40% - 60%", "60% - 80%", "80% - 100%"],
 										datasets: [
 											{
 												data: this.state.trustworthy_arr2,
@@ -267,7 +245,7 @@ class Trustworthy extends React.Component {
 						</div>
 
 						<h2>Students</h2>
-						<div className="Table">
+						<div className='Table'>
 							<Table heading={heading} body={this.table} />
 						</div>
 					</div>
