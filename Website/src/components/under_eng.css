@@ -12,7 +12,7 @@
   transform: translateY(-2%);
 }
 
-.button {
+.tab-button {
   background-color:none;
   color: black;
   text-align: center;
@@ -28,7 +28,7 @@
   left: 90%;
   transform: translateX(+125%) translateY(+20%);
 }
-.button:focus{
+.tab-button:focus{
   background-color: #C54242;
   color: white;
 
@@ -78,7 +78,7 @@
   height: 400px;
   background-color: white;
 }
-.small_button{
+.small_tab-button{
   border:none;
   cursor: pointer;
 }

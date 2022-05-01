@@ -37,6 +37,7 @@ import {
     CartesianGrid
 } from 'recharts';
 
+
 const database = getDatabase(app);
 
 
@@ -266,6 +267,7 @@ class Under_Eng_Overall extends React.Component
                 showMe:false
             }
         )
+
     }
     operation_understanding()
     {
@@ -290,6 +292,7 @@ class Under_Eng_Overall extends React.Component
           {this.state.name}
           </h2>
         </Container>
+        <Navi/>
         <div className="heading_lecture">
             <br></br>
           <br></br>
@@ -448,12 +451,6 @@ class Under_Eng_Overall extends React.Component
                     <br></br>
                     <br></br>
        
-
-
-
-
-
-
         </div>
         </div>
       </div>
@@ -461,4 +458,9 @@ class Under_Eng_Overall extends React.Component
         );
     }
 }
+
+
+
+
+
 export default Under_Eng_Overall;

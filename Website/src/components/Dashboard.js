@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./dashboard.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import ClassCard from "../components/ClassCard";
+import ClassCard from "./ClassCard/ClassCard";
 
 
 
@@ -31,11 +31,9 @@ function Dashboard() {
 	//     if (loading) return;
 	//     fetchClasses();
 	//   }, [user, loading]);
-
 	let hex = [
 		{ creatorName: "Jalote", name: "IP", id: "CSE101" },
-		{ creatorName: "Jal", name: "IP1", id: "CSE103" },
-		{ creatorName: "Shreeya", name: "PRO", id: "FUCK101" }
+		{ creatorName: "Jalote", name: "IP1", id: "CSE101" },
 	];
 
 	return (

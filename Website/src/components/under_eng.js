@@ -394,11 +394,11 @@ class Under_Eng extends React.Component
           <br></br>
           <br></br>
         <div className="App-header">
-        <Button onClick={()=> this.operation_understanding()} className="button">
+        <Button onClick={()=> this.operation_understanding()} className="tab-button">
           Understanding
         </Button>
           
-          <Button onClick={()=> this.operation()} className="button">
+          <Button onClick={()=> this.operation()} className="tab-button">
           Engagement
           </Button>
 

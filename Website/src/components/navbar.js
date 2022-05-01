@@ -6,6 +6,7 @@ import {
 	faChalkboardTeacher,
 	faQuestion,
 	faDatabase,
+	faRobot,
 } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -58,6 +59,10 @@ function Navi() {
 							<Nav.Link href="/rawdata" className="px-2">
 								{" "}
 								<FontAwesomeIcon icon={faDatabase} /> Raw Data
+							</Nav.Link>
+							<Nav.Link href="/explainer_dashboard" className="px-2">
+								{" "}
+								<FontAwesomeIcon icon={faRobot} /> Model Analysis
 							</Nav.Link>
 						</Nav>
 					</Container>
