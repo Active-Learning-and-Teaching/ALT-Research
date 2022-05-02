@@ -5,15 +5,7 @@ import MyPDF from "../Assets/filename.csv";
 import Raw2 from "../Assets/raw2.csv";
 import Raw3 from "../Assets/raw3.csv";
 import file_logo from "../Assets/file_logo.png";
-import {
-	Navbar,
-	Container,
-	Nav,
-	NavDropdown,
-	NavbarBrand,
-	Row,
-	Col,
-} from "react-bootstrap";
+import { Navbar, Container, Nav, NavDropdown, NavbarBrand, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { getDatabase, ref, child, get } from "firebase/database";
 import app from "../firebase";
@@ -45,23 +37,23 @@ function RawData() {
 	});
 
 	return (
-		<div className="RawData">
-			<Container className="heading">
+		<div className='rawData_container'>
+			<Container className='rawData_heading'>
 				<h2>{name}</h2>
 			</Container>
 			<Navi></Navi>
-			<div className="RawData-body">
+			<div className='rawData_body'>
 				<div style={{ textAlign: "center" }}>
 					<br />
-					<Container className="box">
-						<div className="position-absolute mid-center">
-							<Button className="button">
-								<div className="horizontal">
-									<div className="vertical">
-										<img src={file_logo} width="30" height="50" />
+					<Container className='box'>
+						<div className='position-absolute center'>
+							<Button className='button'>
+								<div className='horizontal'>
+									<div className='vertical'>
+										<img src={file_logo} width='30' height='50' />
 									</div>
-									<div className="vertical">
-										<a href={MyPDF} download="raw_data1.csv">
+									<div className='vertical'>
+										<a href={MyPDF} download='raw_data1.csv'>
 											middle.csv
 										</a>
 									</div>
@@ -69,14 +61,14 @@ function RawData() {
 							</Button>
 						</div>
 
-						<div className="position-absolute mid-left">
-							<Button className="button">
-								<div className="horizontal">
-									<div className="vertical">
-										<img src={file_logo} width="30" height="50" />
+						<div className='position-absolute left'>
+							<Button className='button'>
+								<div className='horizontal'>
+									<div className='vertical'>
+										<img src={file_logo} width='30' height='50' />
 									</div>
-									<div className="vertical">
-										<a href={Raw2} download="raw_data2.csv">
+									<div className='vertical'>
+										<a href={Raw2} download='raw_data2.csv'>
 											left.csv
 										</a>
 									</div>
@@ -84,14 +76,14 @@ function RawData() {
 							</Button>
 						</div>
 
-						<div className="position-absolute mid-right">
-							<Button className="button">
-								<div className="horizontal">
-									<div className="vertical">
-										<img src={file_logo} width="30" height="50" />
+						<div className='position-absolute right'>
+							<Button className='button'>
+								<div className='horizontal'>
+									<div className='vertical'>
+										<img src={file_logo} width='30' height='50' />
 									</div>
-									<div className="vertical">
-										<a href={Raw3} download="raw_data3.csv">
+									<div className='vertical'>
+										<a href={Raw3} download='raw_data3.csv'>
 											right.csv
 										</a>
 									</div>

@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
-import { Form, Button, Card, Alert,Container} from "react-bootstrap";
+import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import AppLogo from "../Assets/Logo.png";
-
+import "./login-signup.css";
 export default function Signup() {
 	const emailRef = useRef();
 	const passwordRef = useRef();
@@ -33,86 +33,73 @@ export default function Signup() {
 	}
 
 	return (
-
 		<Container
-		className="d-flex align-items-center justify-content-center"
-		style={{ minHeight: "100vh" }}
-	>
-		<div className="w-100" style={{ maxWidth: "400px" }}>
+			className='d-flex align-items-center justify-content-center'
+			style={{ minHeight: "100vh" }}
+		>
+			<div className='w-100' style={{ maxWidth: "400px" }}>
+				<Card bg='light'>
+					<Card.Body>
+						{error && <Alert variant='danger'>{error}</Alert>}
+						<Container id='main-container' className='d-grid h-300'>
+							<Form id='sign-in-form' className='text-center p-3' onSubmit={handleSubmit}>
+								<img className='mb-4 bootstrap-logo' src={AppLogo} />
+								<Form.Group className='mb-2' controlId='sign-in-email-address'>
+									<Form.Control
+										type='email'
+										size='lg'
+										placeholder='Email address'
+										autoComplete='username'
+										className='position-relative'
+										ref={emailRef}
+										required
+									/>
+								</Form.Group>
+								<Form.Group className='mb-2' controlId='sign-in-password'>
+									<Form.Control
+										type='password'
+										size='lg'
+										placeholder='Password'
+										autoComplete='current-password'
+										className='position-relative'
+										ref={passwordRef}
+										required
+									/>
+								</Form.Group>
+								<Form.Group className='mb-4' controlId='sign-in-password-confirm'>
+									<Form.Control
+										type='password'
+										size='lg'
+										placeholder='ConfirmPassword'
+										autoComplete='current-password'
+										className='position-relative'
+										ref={passwordConfirmRef}
+										required
+									/>
+								</Form.Group>
 
-			<Card bg="light">
-				<Card.Body>
-					{error && <Alert variant="danger">{error}</Alert>}
-					<Container id="main-container" className="d-grid h-300">
-						<Form
-							id="sign-in-form"
-							className="text-center p-3"
-							onSubmit={handleSubmit}
-						>
-							<img className="mb-4 bootstrap-logo" src={AppLogo} />
-							<Form.Group className="mb-2"controlId="sign-in-email-address">
-								<Form.Control
-									type="email"
-									size="lg"
-									placeholder="Email address"
-									autoComplete="username"
-									className="position-relative"
-									ref={emailRef}
-									required
-								/>
-							</Form.Group>
-							<Form.Group className="mb-2" controlId="sign-in-password">
-								<Form.Control
-									type="password"
-									size="lg"
-									placeholder="Password"
-									autoComplete="current-password"
-									className="position-relative"
-									ref={passwordRef}
-									required
-								/>
-							</Form.Group>
-							<Form.Group className="mb-4" controlId="sign-in-password-confirm">
-								<Form.Control
-									type="password"
-									size="lg"
-									placeholder="ConfirmPassword"
-									autoComplete="current-password"
-									className="position-relative"
-									ref={passwordConfirmRef}
-									required
-								/>
-							</Form.Group>
-
-							<div className="d-grid">
-								<style type="text/css">
-									{`
+								<div className='d-grid'>
+									<style type='text/css'>
+										{`
    							 		.btn-flat {
    						  			background-color: #931618;
       								color: white;
   								  }
   							  `}
-								</style>
-								<Button
-									variant="flat"
-									size="lg"
-									type="submit"
-									disabled={loading}
-								>
-									SIGN UP
-								</Button>
-							</div>
-							<p className="mt-5 text-muted">&copy; 2021-2022</p>
-						</Form>
-					</Container>
-				</Card.Body>
-			</Card>
-			<div className="w-100 text-center mt-2">
-				Already have an account? <Link to="/login">Log In</Link>
+									</style>
+									<Button variant='flat' size='lg' type='submit' disabled={loading}>
+										SIGN UP
+									</Button>
+								</div>
+								<p className='mt-5 text-muted'>&copy; 2021-2022</p>
+							</Form>
+						</Container>
+					</Card.Body>
+				</Card>
+				<div className='w-100 text-center mt-2'>
+					Already have an account? <Link to='/login'>Log In</Link>
+				</div>
 			</div>
-		</div>
 		</Container>
 	);
 }
-
-
