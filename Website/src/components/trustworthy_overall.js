@@ -18,13 +18,7 @@ import app from "../firebase";
 import Navi from "./navbar";
 import './under_eng.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useEffect } from "react";
-import {
-	faUsers,
-	faChalkboardTeacher,
-	faQuestion,
-	faDatabase,
-} from "@fortawesome/free-solid-svg-icons";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import {
@@ -70,7 +64,6 @@ class Trustworthy_Overall extends React.Component
             console.log("No data available");
         }
         })
-
     }
     getTrustworthyIndex(){
         console.log('In TLS_OP')
@@ -91,7 +84,6 @@ class Trustworthy_Overall extends React.Component
                     temp.push(dict);
                 }
 
-            
                 console.log(temp);
 
                 this.setState({trustworrthy_arr1: temp})
@@ -261,13 +253,6 @@ class Trustworthy_Overall extends React.Component
                     </Button> 
                     <br></br>
                     <br></br>
-       
-
-
-
-
-
-
         </div>
         </div>
       </div>
