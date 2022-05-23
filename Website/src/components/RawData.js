@@ -18,6 +18,37 @@ import { useState, useEffect } from "react";
 import { getDatabase, ref, child, get } from "firebase/database";
 import app from "../firebase";
 import Navi from "./navbar";
+import React, { useEffect } from "react";
+import "./overall_trustworthy.css";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import ClassCard from "./ClassCard/ClassCard";
+import {
+	Navbar,
+	Container,
+	Nav,
+	NavDropdown,
+	NavbarBrand,
+	Row,
+	Col,
+} from "react-bootstrap";
+import quiz_logo from "../Assets/quiz_logo_new.png";
+import calendar_new from "../Assets/calendar_new.png";
+import {
+	getDatabase,
+	ref,
+	child,
+	get,
+	query,
+	orderByChild,
+} from "firebase/database";
+import { Button } from "reactstrap";
+import app from "../firebase";
+import Navi from "./navbar";
+import "./under_eng.css";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+
 const database = getDatabase(app);
 
 const dbRef = ref(database);
