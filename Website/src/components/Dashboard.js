@@ -1,18 +1,13 @@
-import React, { useEffect } from "react";
-import "./dashboard.css";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import ClassCard from "./ClassCard/ClassCard";
 import {
-	getDatabase,
-	ref,
 	child,
-	get,
-	query,
-	orderByChild,
+	get, getDatabase,
+	ref
 } from "firebase/database";
-import app from "../firebase";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
+import app from "../firebase";
+import ClassCard from "./ClassCard/ClassCard";
+import "./dashboard.css";
 import "./spinner.css";
 
 const database = getDatabase(app);
@@ -35,18 +30,16 @@ function Dashboard() {
 							creatorName: class_obj.instructor,
 							name: class_obj.courseName,
 							id: class_obj.courseCode,
+							key: itr[i],
 						};
 						console.log(obj);
-						all_classes.push(obj);
+						setClasses(classes => [...classes,obj]);
 					} else {
 						console.log("No data available");
 					}
 				})
 				.then(() => {
-					setTimeout(() => {
-						setClasses(all_classes);
-						setLoading(false);
-					}, 500);
+					setLoading(false);
 				});
 		}
 	};
@@ -104,6 +97,7 @@ function Dashboard() {
 							name={individualClass.name}
 							id={individualClass.id}
 							style={{ marginRight: 30, marginBottom: 30 }}
+							pk = {individualClass.key}
 						/>
 					))}
 				</div>

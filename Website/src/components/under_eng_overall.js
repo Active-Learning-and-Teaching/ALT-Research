@@ -1,46 +1,24 @@
-import "./under_eng.css";
-import React, { Component } from "react";
-import { Pie, Doughnut } from "react-chartjs-2";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { child, get, getDatabase, ref } from "firebase/database";
+import React from "react";
+import {
+    Container
+} from "react-bootstrap";
 import { Button } from "reactstrap";
 import {
-	Navbar,
-	Container,
-	Nav,
-	NavDropdown,
-	NavbarBrand,
-	Row,
-	Col,
-} from "react-bootstrap";
-import lecture_logo from "../Assets/lecture_logo_new.png";
+    CartesianGrid, Legend, Line, LineChart,
+    ResponsiveContainer, Tooltip, XAxis,
+    YAxis
+} from 'recharts';
 import calendar_new from "../Assets/calendar_new.png";
-import { getDatabase, ref, child, get } from "firebase/database";
+import lecture_logo from "../Assets/lecture_logo_new.png";
 import app from "../firebase";
 import Navi from "./navbar";
-import './under_eng.css';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useEffect } from "react";
-import {
-	faUsers,
-	faChalkboardTeacher,
-	faQuestion,
-	faDatabase,
-} from "@fortawesome/free-solid-svg-icons";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./under_eng.css";
 
-import {
-    LineChart,
-    ResponsiveContainer,
-    Legend, Tooltip,
-    Line,
-    XAxis,
-    YAxis,
-    CartesianGrid
-} from 'recharts';
 
 
 const database = getDatabase(app);
-
-
 const dbRef = ref(database);
 class Under_Eng_Overall extends React.Component
 {

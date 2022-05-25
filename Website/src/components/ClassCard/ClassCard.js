@@ -4,17 +4,15 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./ClassCard.css";
 
-function ClassCard({ name, creatorName, creatorPhoto, id, style }) {
-//   const history = useHistory();
-//   const goToClass = () => {
-//     history.push(`/class/${id}`);
-//   };
+function ClassCard({ name, creatorName, creatorPhoto, id, style , pk}) {
+
+
+
 const navigate = useNavigate();
 
   function handleClick(){
-    navigate("/under_eng_overall");
+    navigate(`/Trustworthy_overall_fun/${pk}`);
   }
-
 
 
   return (
@@ -35,4 +33,6 @@ const navigate = useNavigate();
     </div>
   );
 }
+
+
 export default ClassCard;

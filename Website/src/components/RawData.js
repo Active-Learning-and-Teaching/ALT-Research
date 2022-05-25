@@ -1,53 +1,19 @@
-import "./rawdata.css";
-import React from "react";
+import { child, get, getDatabase, ref } from "firebase/database";
+import React, { useEffect, useState } from "react";
+import {
+	Container
+} from "react-bootstrap";
 import { Button } from "reactstrap";
 import MyPDF from "../Assets/filename.csv";
+import file_logo from "../Assets/file_logo.png";
 import Raw2 from "../Assets/raw2.csv";
 import Raw3 from "../Assets/raw3.csv";
-import file_logo from "../Assets/file_logo.png";
-import {
-	Navbar,
-	Container,
-	Nav,
-	NavDropdown,
-	NavbarBrand,
-	Row,
-	Col,
-} from "react-bootstrap";
-import { useState, useEffect } from "react";
-import { getDatabase, ref, child, get } from "firebase/database";
 import app from "../firebase";
 import Navi from "./navbar";
-import React, { useEffect } from "react";
 import "./overall_trustworthy.css";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import ClassCard from "./ClassCard/ClassCard";
-import {
-	Navbar,
-	Container,
-	Nav,
-	NavDropdown,
-	NavbarBrand,
-	Row,
-	Col,
-} from "react-bootstrap";
-import quiz_logo from "../Assets/quiz_logo_new.png";
-import calendar_new from "../Assets/calendar_new.png";
-import {
-	getDatabase,
-	ref,
-	child,
-	get,
-	query,
-	orderByChild,
-} from "firebase/database";
-import { Button } from "reactstrap";
-import app from "../firebase";
-import Navi from "./navbar";
-import "./under_eng.css";
+import "./rawdata.css";
 
-import "bootstrap/dist/css/bootstrap.min.css";
+
 
 const database = getDatabase(app);
 
@@ -55,24 +21,24 @@ const dbRef = ref(database);
 
 function RawData() {
 	const [name, setName] = useState("Default  Value");
-	const getCourseName = (key) => {
-		console.log("In getCourse");
-		get(child(dbRef, "InternalDb/Courses/" + key + "/courseCode"))
-			.then((snapshot) => {
-				if (snapshot.exists()) {
-					console.log(snapshot.val());
-					setName(snapshot.val());
-				} else {
-					console.log("No data available");
-				}
-			})
-			.catch((e) => {
-				console.log("Error Ocuured" + e);
-			});
-	};
+	// const getCourseName = (key) => {
+	// 	console.log("In getCourse");
+	// 	get(child(dbRef, "InternalDb/Courses/" + key + "/courseCode"))
+	// 		.then((snapshot) => {
+	// 			if (snapshot.exists()) {
+	// 				console.log(snapshot.val());
+	// 				setName(snapshot.val());
+	// 			} else {
+	// 				console.log("No data available");
+	// 			}
+	// 		})
+	// 		.catch((e) => {
+	// 			console.log("Error Ocuured" + e);
+	// 		});
+	// };
 	useEffect(() => {
 		// Update the document title using the browser API
-		getCourseName("-M8rFNfwcRmYqx8mpJxL");
+		// getCourseName("");
 	});
 
 	return (
@@ -85,7 +51,7 @@ function RawData() {
 				<div style={{ textAlign: "center" }}>
 					<br />
 					<Container className="box">
-						<div className="position-absolute mid-center">
+						<div>
 							<Button className="button">
 								<div className="horizontal">
 									<div className="vertical">
@@ -100,7 +66,7 @@ function RawData() {
 							</Button>
 						</div>
 
-						<div className="position-absolute mid-left">
+						<div >
 							<Button className="button">
 								<div className="horizontal">
 									<div className="vertical">
@@ -115,7 +81,7 @@ function RawData() {
 							</Button>
 						</div>
 
-						<div className="position-absolute mid-right">
+						<div>
 							<Button className="button">
 								<div className="horizontal">
 									<div className="vertical">

@@ -1,20 +1,14 @@
-import "./under_eng.css";
-import React, { Component } from "react";
-import { Pie, Doughnut } from "react-chartjs-2";
-import { Button } from "reactstrap";
+import { child, get, getDatabase, ref } from "firebase/database";
+import React from "react";
 import {
-	Navbar,
-	Container,
-	Nav,
-	NavDropdown,
-	NavbarBrand,
-	Row,
-	Col,
+    Container
 } from "react-bootstrap";
+import { Pie } from "react-chartjs-2";
+import { Button } from "reactstrap";
 import back_arrow from "../Assets/back_arrow.png";
-import { getDatabase, ref, child, get } from "firebase/database";
 import app from "../firebase";
 import Navi from "./navbar";
+import "./under_eng.css";
 const database = getDatabase(app);
 
 

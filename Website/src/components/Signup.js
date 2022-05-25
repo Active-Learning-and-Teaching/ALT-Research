@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
-import { Form, Button, Card, Alert,Container} from "react-bootstrap";
-import { useAuth } from "../contexts/AuthContext";
+import { Alert, Button, Card, Container, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import AppLogo from "../Assets/Logo.png";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Signup() {
 	const emailRef = useRef();

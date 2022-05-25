@@ -1,65 +1,89 @@
-import React, { useEffect } from "react";
-import "./overall_trustworthy.css";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import ClassCard from "./ClassCard/ClassCard";
-import {
-	Navbar,
-	Container,
-	Nav,
-	NavDropdown,
-	NavbarBrand,
-	Row,
-	Col,
-} from "react-bootstrap";
-import quiz_logo from "../Assets/quiz_logo_new.png";
-import calendar_new from "../Assets/calendar_new.png";
-import {
-	getDatabase,
-	ref,
-	child,
-	get,
-	query,
-	orderByChild,
-} from "firebase/database";
-import { Button } from "reactstrap";
-import app from "../firebase";
-import Navi from "./navbar";
-import "./under_eng.css";
-
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { child, get, getDatabase, ref } from "firebase/database";
+import React, { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
+import { useParams, useNavigate } from "react-router-dom";
+import { Button } from "reactstrap";
 import {
+	CartesianGrid,
+	Legend,
+	Line,
 	LineChart,
 	ResponsiveContainer,
-	Legend,
 	Tooltip,
-	Line,
 	XAxis,
 	YAxis,
-	CartesianGrid,
 } from "recharts";
+import calendar_new from "../Assets/calendar_new.png";
+import quiz_logo from "../Assets/quiz_logo_new.png";
+import app from "../firebase";
+import Navi from "./navbar";
+import "./overall_trustworthy.css";
+import "./under_eng.css";
 
 const database = getDatabase(app);
 const dbRef = ref(database);
 
 function Trustworthy_overall_fun() {
+	const { id } = useParams();
 	const [name, setName] = useState("Default Value");
-	const [showme, setShowme] = useState(true);
-	const [quiz_name, setQuiz_name] = useState("Quiz No.");
 	const [trustworthy_arr1, setTrustworthy_arr1] = useState([]);
 	const [trustworthy_arr2, setTrustworthy_arr2] = useState([]);
-	const [quiz_dates, setQuiz_dates] = useState([]);
-	const [quiz_names, setQuiz_names] = useState([]);
+	const [quiz_dn, setQuizdn] = useState([]);
+	const navigate = useNavigate();
 
-	const getCourseName = (key) => {
+	const getCourseName = () => {
 		console.log("In getCourse");
-		get(child(dbRef, "InternalDb/Courses/" + key + "/courseCode")).then(
+		get(child(dbRef, `InternalDb/alt-r/Courses/${id}`)).then((snapshot) => {
+			if (snapshot.exists()) {
+				let obj = snapshot.val();
+				let courseName = obj.pk;
+				let cut_idx = courseName.lastIndexOf("_");
+				courseName = courseName.slice(cut_idx + 1, courseName.length);
+				setName(courseName);
+			} else {
+				console.log("No data available");
+			}
+		});
+	};
+
+	const getTrustworthyIndex = () => {
+		get(child(dbRef, `InternalDb/alt-r/Courses/${id}/Quizzes/`)).then(
 			(snapshot) => {
+				console.log("Printing Snapshotttts");
+				console.log(snapshot);
+				console.log(snapshot.val());
 				if (snapshot.exists()) {
-					console.log(snapshot.val());
-					setName(snapshot.val());
-					//console.log(name);
+					console.log("In ALT-Dev database and printing lectures table");
+					let temp = [];
+					console.log(Object.keys(snapshot.val()));
+					for (let i = 0; i < Object.keys(snapshot.val()).length; i++) {
+						let num = Object.values(snapshot.val())[i][
+							"Overall_Trustworthy index1"
+						];
+						console.log(num);
+						let quiz_num = Object.keys(snapshot.val())[i];
+						let dict = { name: quiz_num, trustworthy_index_1: num };
+						temp.push(dict);
+					}
+					console.log(temp);
+
+					setTrustworthy_arr1(temp);
+
+					let temp2 = [];
+
+					console.log(Object.keys(snapshot.val()));
+					for (let i = 0; i < Object.keys(snapshot.val()).length; i++) {
+						let num = Object.values(snapshot.val())[i][
+							"Overall_Trustworthy index2"
+						];
+						let quiz_num = Object.keys(snapshot.val())[i];
+						let dict = { name: quiz_num, trustworthy_index_2: num };
+						temp2.push(dict);
+					}
+
+					console.log(temp2);
+					setTrustworthy_arr2(temp2);
 				} else {
 					console.log("No data available");
 				}
@@ -67,97 +91,42 @@ function Trustworthy_overall_fun() {
 		);
 	};
 
-	const getTrustworthyIndex = () => {
-		console.log("In TLS_OP");
-		get(child(dbRef, "InternalDb/alt-r/Quizzes")).then((snapshot) => {
-			console.log("Printing Snapshotttts");
-			console.log(snapshot);
-			console.log(snapshot.val());
-			if (snapshot.exists()) {
-				console.log("In ALT-Dev database and printing lectures table");
-				let temp = [];
-				console.log(Object.keys(snapshot.val()));
-				for (let i = 0; i < Object.keys(snapshot.val()).length; i++) {
-					let num = Object.values(snapshot.val())[i][
-						"Overall_Trustworthy index 1"
-					];
-					let quiz_num = Object.keys(snapshot.val())[i];
-					let dict = { name: quiz_num, trustworthy_index_1: num };
-					temp.push(dict);
+	const getQuizDatesNames = () => {
+		get(child(dbRef, `InternalDb/alt-r/Courses/${id}/Quizzes/`)).then(
+			(snapshot) => {
+				if (snapshot.exists()) {
+					console.log("In ALT-Dev database and printing Quiz DATESS");
+					let temp1 = [];
+					let temp2 = []; // Having lecture names
+					console.log(Object.keys(snapshot.val()));
+					for (var i = 0; i < Object.keys(snapshot.val()).length; i++) {
+						var num = Object.values(snapshot.val())[i]["date"];
+						var quiz_num = Object.keys(snapshot.val())[i];
+						let obj = { quiz_date: num, quiz_num: quiz_num };
+						temp1.push(obj);
+					}
+
+					console.log(temp1);
+					setQuizdn(temp1);
 				}
-				console.log(temp);
-
-				setTrustworthy_arr1(temp);
-
-				let temp2 = [];
-
-				console.log(Object.keys(snapshot.val()));
-				for (let i = 0; i < Object.keys(snapshot.val()).length; i++) {
-					let num = Object.values(snapshot.val())[i][
-						"Overall_Trustworthy index 2"
-					];
-					let quiz_num = Object.keys(snapshot.val())[i];
-					let dict = { name: quiz_num, trustworthy_index_2: num };
-					temp2.push(dict);
-				}
-
-				console.log(temp2);
-
-				setTrustworthy_arr2(temp2);
-			} else {
-				console.log("No data available");
 			}
-		});
+		);
 	};
 
-	const getQuizName = () => {
-		console.log("In TLS_OP to get Quiz Name");
-		get(child(dbRef, "InternalDb/alt-r/Quizzes")).then((snapshot) => {
-			if (snapshot.exists()) {
-				setQuiz_name(Object.keys(snapshot.val())[0]);
-			} else {
-				console.log("No data available");
-			}
-		});
-	};
-
-	const getQuizDate = () => {
-		get(child(dbRef, "InternalDb/alt-r/Quizzes")).then((snapshot) => {
-			if (snapshot.exists()) {
-				console.log("In ALT-Dev database and printing Quiz DATESS");
-				let temp1 = [];
-				let temp2 = []; // Having lecture names
-				console.log(Object.keys(snapshot.val()));
-				for (var i = 0; i < Object.keys(snapshot.val()).length; i++) {
-					var num = Object.values(snapshot.val())[i]["date"];
-					var quiz_num = Object.keys(snapshot.val())[i];
-					temp1.push(num);
-					temp2.push(quiz_num);
-				}
-
-				console.log(temp1);
-
-				setQuiz_dates(temp1);
-				setQuiz_names(temp2);
-			}
-		});
-	};
-
-	const operation = () => {
-		this.setState({
-			showMe: false,
-		});
+	const route = (quiz_id) => {
+		console.log(quiz_id);
+		navigate(`/Trustworthy_func/${id}`, { state: { quiz_no: quiz_id } });
 	};
 
 	useEffect(() => {
-		getCourseName("-M8rFNfwcRmYqx8mpJxL");
+		getCourseName();
 		getTrustworthyIndex();
-		getQuizName();
-		getQuizDate();
+		getQuizDatesNames();
 	}, []);
 
 	return (
 		<div className="App">
+			<Navi></Navi>
 			<Container className="heading">
 				<h2>{name}</h2>
 			</Container>
@@ -218,38 +187,24 @@ function Trustworthy_overall_fun() {
 
 					<h4>Quizzes </h4>
 
-					<Button
-						color="info"
-						width="1000"
-						height="20"
-						onClick={() => operation()}
-					>
-						<img src={quiz_logo} width="18" height="20" />
-						{quiz_names[0]}
-						<br></br>
-						<img src={calendar_new} width="18" height="20" />
-						{quiz_dates[0]}
-					</Button>
-					<br></br>
-					<br></br>
-					<Button color="info" onClick={() => operation()}>
-						<img src={quiz_logo} width="18" height="20" />
-						{quiz_names[1]}
-						<br></br>
-						<img src={calendar_new} width="18" height="20" />
-						{quiz_dates[1]}
-					</Button>
-					<br></br>
-					<br></br>
-					<Button color="info" onClick={() => operation()}>
-						<img src={quiz_logo} width="18" height="20" />
-						{quiz_names[2]}
-						<br></br>
-						<img src={calendar_new} width="18" height="20" />
-						{quiz_dates[2]}
-					</Button>
-					<br></br>
-					<br></br>
+					{quiz_dn.map((quiz_info) => (
+						<>
+							<Button
+								color="info"
+								width="1000"
+								height="20"
+								onClick={() => route(quiz_info.quiz_num)}
+							>
+								<img src={quiz_logo} width="18" height="20" />
+								{quiz_info.quiz_num}
+								<br></br>
+								<img src={calendar_new} width="18" height="20" />
+								{quiz_info.quiz_date}
+							</Button>
+							<br></br>
+							<br></br>
+						</>
+					))}
 				</div>
 			</div>
 		</div>
